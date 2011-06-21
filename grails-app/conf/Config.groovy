@@ -87,9 +87,27 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     warn   'org.mortbay.log'
+
+    debug  'grails.app'
+
+    //trace  'org.hibernate.type'
+
+    off    'grails.app.services.org.grails.plugin.resource',
+           'grails.app.taglib.org.grails.plugin.resource',
+           'grails.app.resourceMappers.org.grails.plugin.resource'
+}
+
+grails.gorm.default.mapping = {
+   cache true
+   id generator:'identity'
 }
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'general.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'general.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'general.Rol'
+grails.plugins.springsecurity.roleHierarchy = '''
+   ROLE_ADMIN > ROLE_DOCTOR
+   ROLE_DOCTOR > ROLE_PATIENT
+'''
+

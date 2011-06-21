@@ -1,6 +1,6 @@
 package general
 
-class Rol {
+class Rol implements Serializable {
 
 	String authority
 

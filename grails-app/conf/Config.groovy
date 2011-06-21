@@ -108,6 +108,8 @@ grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'general.Usuar
 grails.plugins.springsecurity.authority.className = 'general.Rol'
 grails.plugins.springsecurity.roleHierarchy = '''
    ROLE_ADMIN > ROLE_DOCTOR
+   ROLE_ADMIN > ROLE_HOSPITAL
    ROLE_DOCTOR > ROLE_PATIENT
+   ROLE_HOSPITAL > ROLE_PATIENT
 '''
 

@@ -12,7 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="nuevo"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-usuario" class="content scaffold-list" role="main">
@@ -26,40 +26,36 @@
 					
 						<g:sortableColumn property="username" title="${message(code: 'usuario.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'usuario.password.label', default: 'Password')}" />
-					
 						<g:sortableColumn property="nombre" title="${message(code: 'usuario.nombre.label', default: 'Nombre')}" />
 					
 						<g:sortableColumn property="apellido" title="${message(code: 'usuario.apellido.label', default: 'Apellido')}" />
 					
 						<g:sortableColumn property="correo" title="${message(code: 'usuario.correo.label', default: 'Correo')}" />
 					
-						<g:sortableColumn property="accountExpired" title="${message(code: 'usuario.accountExpired.label', default: 'Account Expired')}" />
+						<g:sortableColumn property="authorities" title="${message(code: 'usuario.authorities.label', default: 'Roles')}" />
 					
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${usuarioInstanceList}" status="i" var="usuarioInstance">
+				<g:each in="${usuarios}" status="i" var="usuario">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${usuarioInstance.id}">${fieldValue(bean: usuarioInstance, field: "username")}</g:link></td>
+						<td><g:link action="ver" id="${usuario.id}">${fieldValue(bean: usuario, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "password")}</td>
+						<td>${fieldValue(bean: usuario, field: "nombre")}</td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "nombre")}</td>
+						<td>${fieldValue(bean: usuario, field: "apellido")}</td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "apellido")}</td>
+						<td>${fieldValue(bean: usuario, field: "correo")}</td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "correo")}</td>
-					
-						<td><g:formatBoolean boolean="${usuarioInstance.accountExpired}" /></td>
+						<td>${fieldValue(bean: usuario, field: "authorities")}</td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${usuarioInstanceTotal}" />
+				<g:paginate total="${totalDeUsuarios}" />
 			</div>
 		</div>
 	</body>

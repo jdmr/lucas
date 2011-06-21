@@ -5,9 +5,13 @@ class BootStrap {
     def init = { servletContext ->
         log.info "Validando roles"
         def rolAdmin = general.Rol.findByAuthority('ROLE_ADMIN')
-        if (general.Rol.count() != 3) {
+        if (general.Rol.count() != 4) {
             if (!rolAdmin) {
                 rolAdmin = new general.Rol(authority: 'ROLE_ADMIN').save(flush:true)
+            }
+            def rolHospital = general.Rol.findByAuthority('ROLE_HOSPITAL')
+            if (!rolHospital) {
+                rolHospital = new general.Rol(authority: 'ROLE_HOSPITAL').save(flush:true)
             }
             def rolDoc = general.Rol.findByAuthority('ROLE_DOCTOR')
             if (!rolDoc) {
